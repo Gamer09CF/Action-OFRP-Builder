@@ -106,7 +106,6 @@ jobs:
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         git clone ${{ inputs.KERNEL_TREE }} -b ${{ inputs.KERNEL_TREE_BRANCH }} ./${{ inputs.KERNEL_PATH }}
         cd ${{ inputs.KERNEL_PATH }}
-        echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Clone common tree
       if: |
