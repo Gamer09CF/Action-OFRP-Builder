@@ -23,6 +23,14 @@ on:
         description: 'DEVICE_PATH'
         required: true
         default: 'device/nubia/NX679J'
+      KERNEL_PATH:
+        description: 'Specify your Kernel Path'
+        required: true
+        default: 'kernel/nothing/sm7325'
+      KERNEL_TREE_BRANCH:
+        description: 'Specify your Device Kernel Branch'
+        required: true
+        default: 'lineage-22.2'
       COMMON_TREE_URL:
         description: 'COMMON_TREE_URL (if no common tree, leave blank)'
         required: false
@@ -88,6 +96,13 @@ jobs:
         cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
         git clone ${{ github.event.inputs.DEVICE_TREE_URL }} -b ${{ github.event.inputs.DEVICE_TREE_BRANCH }} ./${{ github.event.inputs.DEVICE_PATH }}
       working-directory: ${{ steps.pwd.outputs.workspace-folder }}
+
+    - name: Clone Kernel Tree
+      run: |
+        cd ${{ steps.pwd.outputs.workspace-folder }}/fox_${{ github.event.inputs.MANIFEST_BRANCH }}
+        git clone ${{ inputs.KERNEL_TREE }} -b ${{ inputs.KERNEL_TREE_BRANCH }} ./${{ inputs.KERNEL_PATH }}
+        cd ${{ inputs.KERNEL_PATH }}
+        echo "COMMIT_ID=$(git rev-parse HEAD)" >> $GITHUB_ENV
 
     - name: Clone common tree
       if: |
