@@ -27,6 +27,10 @@ on:
         description: 'Specify your Kernel Path'
         required: true
         default: 'kernel/nothing/sm7325'
+      KERNEL_TREE:
+        description: 'Specify your Device Kernel'
+        required: true
+        default: 'https://github.com/LineageOS/android_kernel_nothing_sm7325'
       KERNEL_TREE_BRANCH:
         description: 'Specify your Device Kernel Branch'
         required: true
