@@ -35,12 +35,6 @@ on:
         description: 'Specify your Device Kernel Branch'
         required: true
         default: 'lineage-22.2'
-      COMMON_TREE_URL:
-        description: 'COMMON_TREE_URL (if no common tree, leave blank)'
-        required: false
-      COMMON_PATH:
-        description: 'COMMON_PATH (if no common tree, leave blank)'
-        required: false
       DEVICE_NAME:
         description: 'DEVICE_NAME'
         required: true
